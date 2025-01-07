@@ -1,11 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { MoonIcon, ShoppingBasketIcon, SunIcon } from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
-import { MainNav } from './desktop'
-import { MobileNav } from './mobile'
+import { MainNav } from './Desktop'
+import { MobileNav } from './Mobile'
 
 export default function Header() {
-
    return (
       <header className="supports-backdrop-blur:bg-background/90 sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur mb-4 px-[1.4rem] md:px-[4rem] lg:px-[6rem] xl:px-[8rem] 2xl:px-[12rem]">
          <div className="flex h-14 items-center">

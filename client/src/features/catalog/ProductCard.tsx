@@ -1,17 +1,23 @@
+import { MouseEvent } from "react"
 import { Product } from "@/app/models/product"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { ImageSkeleton } from "../common/Icons"
+import { MinusIcon, PlusIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 type Props = {
   product: Product
+  amountInCart?: number
+  onProductAdd?: (id: number) => void
+  onProductRemove?: (id: number) => void
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, amountInCart, onProductAdd, onProductRemove }: Props) {
   
   function ProductPrice() {
      const price = product.price / 100;
-     const discount = 25;
+     const discount = product.discountPercent;
 
      if (discount > 0) {
          
@@ -31,13 +37,25 @@ export default function ProductCard({ product }: Props) {
      return <h2>{price} NOK</h2>
   }
 
+   function onPlusClick(event: MouseEvent<HTMLButtonElement>): void {
+      event.preventDefault();
+      event.stopPropagation();
+      onProductAdd?.(product.id);
+   }
+
+   function onMinusClick(event: MouseEvent<HTMLButtonElement>): void {
+      event.preventDefault();
+      event.stopPropagation();
+      onProductRemove?.(product.id);
+   }
+
   return (
      <a className="" href={`/products/${product.id}`}>
-        <Card className="h-full">
+        <Card className="h-full border border-neutral-200 dark:border-neutral-600">
            <CardHeader className="p-0">
               <div className="relative w-full">
                  <img
-                    className="rounded-t-lg w-full h-full"
+                    className="rounded-t-xl w-full h-full"
                     src={product.imageUrl}
                     alt="product image"
                     aspect-ratio="1/1"
@@ -45,21 +63,39 @@ export default function ProductCard({ product }: Props) {
               </div>
            </CardHeader>
            <CardContent className="grid gap-1 p-4">
-              <Badge variant="outline" className="w-min text-neutral-500">
-                 category
+              <Badge variant="outline" className="w-max text-neutral-500">
+                 {product.type}
               </Badge>
-
-              <h2 className="mt-2">{product.name}</h2>
-              <p className="text-xs text-neutral-500 text-justify">
+              <h2 className="mt-4">{product.name}</h2>
+              <p className="text-xs text-neutral-500 text-justify h-10">
                  {product.description}
               </p>
            </CardContent>
-           <CardFooter>
-              {product.quantityInFridge > 0 ? (
-                 <ProductPrice />
-              ) : (
-                 <Badge variant="secondary">Out of stock</Badge>
-              )}
+           <CardFooter className="flex-col items-start px-4 justify-center gap-y-4">
+               {product.quantityInFridge > 0 ? (
+                  <ProductPrice />
+               ) : (
+                  <Badge variant="secondary">Out of stock</Badge>
+               )}
+               <div className="flex items-center justify-end w-full">
+                  <Button 
+                     className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
+                     variant="ghost"
+                     onClick={onPlusClick}
+                  >
+                     <PlusIcon />
+                  </Button>
+                  <div className="w-8 h-8 flex items-center justify-center">
+                     {amountInCart}
+                  </div>
+                  <Button 
+                     className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"  
+                     variant="ghost"
+                     onClick={onMinusClick}
+                  >
+                     <MinusIcon />
+                  </Button>
+               </div>
            </CardFooter>
         </Card>
      </a>
