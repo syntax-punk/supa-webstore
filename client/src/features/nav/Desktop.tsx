@@ -39,7 +39,7 @@ export function NavMenu() {
          <NavigationMenuList>
             <NavigationMenuItem>
                <a href="/products">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
                      <div className="font-normal text-foreground/70">
                         Products
                      </div>

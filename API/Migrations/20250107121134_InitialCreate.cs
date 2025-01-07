@@ -19,6 +19,7 @@ namespace API.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<long>(type: "INTEGER", nullable: false),
+                    DiscountPercent = table.Column<int>(type: "INTEGER", nullable: false),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     SyrupBrand = table.Column<string>(type: "TEXT", nullable: false),

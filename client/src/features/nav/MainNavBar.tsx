@@ -1,8 +1,8 @@
-import { MobileNav } from '@/components/native/nav/mobile'
-import { MainNav } from '@/components/native/nav/desktop'
 import { Button } from '@/components/ui/button'
 import { MoonIcon, ShoppingBasketIcon, SunIcon } from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
+import { MainNav } from './desktop'
+import { MobileNav } from './mobile'
 
 export default function Header() {
 
