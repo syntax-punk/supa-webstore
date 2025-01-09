@@ -1,8 +1,7 @@
-import Header from "@/features/common/nav/MainNavBar"
-import { Outlet } from "react-router-dom"
+import Header from '@/features/common/nav/MainNavBar';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-
   return (
     <>
       <Header />
@@ -10,7 +9,7 @@ function App() {
         <Outlet />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

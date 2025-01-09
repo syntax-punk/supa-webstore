@@ -9,4 +9,4 @@ export type Product = {
   syrupBrand: string;
   ingredients: string[];
   quantityInFridge: number;
-}
+};

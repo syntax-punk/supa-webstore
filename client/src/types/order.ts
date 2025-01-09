@@ -1,3 +1,3 @@
 export type OrderMap = {
-    [key: string]: number
-}
+  [key: string]: number;
+};
