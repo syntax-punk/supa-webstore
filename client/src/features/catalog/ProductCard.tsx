@@ -1,9 +1,8 @@
-import { MouseEvent } from "react"
 import { Product } from "@/app/models/product"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { ImageSkeleton } from "../common/Icons"
-import { MinusIcon, PlusIcon } from "lucide-react"
+import { ArrowRightIcon, MinusIcon, PlusIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 type Props = {
@@ -37,20 +36,21 @@ export default function ProductCard({ product, amountInCart, onProductAdd, onPro
      return <h2>{price} NOK</h2>
   }
 
-   function onPlusClick(event: MouseEvent<HTMLButtonElement>): void {
-      event.preventDefault();
-      event.stopPropagation();
+   function onPlusClick(): void {
       onProductAdd?.(product.id);
    }
 
-   function onMinusClick(event: MouseEvent<HTMLButtonElement>): void {
-      event.preventDefault();
-      event.stopPropagation();
+   function onMinusClick(): void {
       onProductRemove?.(product.id);
    }
 
+   function onViewClick(): void {
+      console.log("View product");
+      // navigate to `/products/${product.id}`
+   }
+
   return (
-     <a className="" href={`/products/${product.id}`}>
+     <div>
         <Card className="h-full border border-neutral-200 dark:border-neutral-600">
            <CardHeader className="p-0">
               <div className="relative w-full">
@@ -77,28 +77,39 @@ export default function ProductCard({ product, amountInCart, onProductAdd, onPro
                ) : (
                   <Badge variant="secondary">Out of stock</Badge>
                )}
-               <div className="flex items-center justify-end w-full">
-                  <Button 
-                     className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
-                     variant="ghost"
-                     onClick={onPlusClick}
-                  >
-                     <PlusIcon />
-                  </Button>
-                  <div className="w-8 h-8 flex items-center justify-center">
-                     {amountInCart}
+               <div className="flex items-center justify-between w-full">
+                  <div className="flex">
+                     <Button 
+                        className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
+                        variant="ghost"
+                        onClick={onPlusClick}
+                     >
+                        <PlusIcon />
+                     </Button>
+                     <div className="w-8 h-8 flex items-center justify-center">
+                        {amountInCart}
+                     </div>
+                     <Button 
+                        className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"  
+                        variant="ghost"
+                        onClick={onMinusClick}
+                     >
+                        <MinusIcon />
+                     </Button>
                   </div>
-                  <Button 
-                     className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"  
-                     variant="ghost"
-                     onClick={onMinusClick}
-                  >
-                     <MinusIcon />
-                  </Button>
+                  <div>
+                     <Button
+                        className="justify-self-end w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
+                        variant="ghost"
+                        onClick={onViewClick}
+                     >
+                        <ArrowRightIcon />
+                     </Button>
+                  </div>
                </div>
            </CardFooter>
         </Card>
-     </a>
+     </div>
   )
 }
 

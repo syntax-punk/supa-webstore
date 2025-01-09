@@ -2,6 +2,7 @@ import { isVariableValid } from '@/lib/utils'
 import { Heading } from '../common/Heading'
 import ProductList, { ProductSkeletonList } from './ProductList'
 import { Separator } from '../common/Separator'
+import Carousel from '../common/Carousel'
 
 export default function Catalog() {
 
@@ -264,6 +265,8 @@ export default function Catalog() {
     }
   ]
 
+  const banners =["/images/banners/banner1.png", "/images/banners/banner2.png", "/images/banners/banner3.png", "/images/banners/banner4.png"]
+
   // const products = await prisma.product.findMany({
   //    include: {
   //       brand: true,
@@ -276,22 +279,20 @@ export default function Catalog() {
   //    take: 3,
   // })
 
-  // const banners = await prisma.banner.findMany()
-
   return (
      <div className="flex flex-col border-neutral-200 dark:border-neutral-700">
-        {/* <Carousel images={banners.map((obj) => obj.image)} /> */}
-        {/* <Separator className="my-8" /> */}
+        <Carousel images={banners} />
+        <Separator className="my-4" />
         <Heading
-           title="Products"
-           description="Check out our products"
+           title="supa smooooooth"
+           description="impossible to resist"
         />
         {isVariableValid(products) ? (
            <ProductList products={products} />
         ) : (
            <ProductSkeletonList />
         )}
-        <Separator className="my-8" />
+        <Separator className="my-4" />
         {/* {isVariableValid(blogs) ? (
            <BlogPostGrid blogs={blogs} />
         ) : (
