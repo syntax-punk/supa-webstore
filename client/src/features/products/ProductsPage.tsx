@@ -1,9 +1,10 @@
 import { isVariableValid } from '@/lib/utils'
 import { Heading } from '../common/Heading'
-import ProductList, { ProductSkeletonList } from './ProductList'
+import ProductList from './ProductList'
 import { Separator } from '../common/Separator'
 import { useEffect, useState } from 'react'
 import { Product } from '@/app/models/product'
+import { ProductsListSkeleton } from './Skeletons'
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
@@ -24,7 +25,7 @@ export default function ProductsPage() {
         {isVariableValid(products) ? (
            <ProductList products={products} />
         ) : (
-           <ProductSkeletonList />
+           <ProductsListSkeleton />
         )}
      </div>
   )

@@ -1,9 +1,22 @@
+import { Product } from "@/app/models/product";
+import { useState, useEffect } from "react";
 import Carousel from "../common/Carousel";
 import { Heading } from "../common/Heading";
 import { Separator } from "../common/Separator";
 import TopPicks from "../products/TopPicks";
 
 export default function HomePage() {
+  const [products, setProducts] = useState<Product[]>()
+
+  useEffect(() => {
+    fetch('https://localhost:5001/api/products')
+      .then((res) => res.json())
+      .then((data) => {
+         const topPicks = data.slice(0, 8);
+         setProducts(topPicks)
+      })
+  }, [])
+
   const banners =["/images/banners/banner1.png", "/images/banners/banner2.png", "/images/banners/banner3.png", "/images/banners/banner4.png"]
 
   return (
@@ -11,10 +24,10 @@ export default function HomePage() {
       <Carousel images={banners} />
       <Separator className="my-2" />
       <Heading
-          title="Our Top Picks"
-          description="impossible to resist"
+          title="Top Picks"
+          description="our top smooooooth picks"
       />
-      <TopPicks />
+      <TopPicks products={products} />
       <Separator className="my-2" />
 
       {/* {isVariableValid(blogs) ? (

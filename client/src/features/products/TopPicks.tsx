@@ -1,22 +1,26 @@
-import ProductList, { ProductSkeletonList } from './ProductList'
-import { useEffect, useState } from 'react'
 import { Product } from '@/app/models/product'
 import { isVariableValid } from '@/lib/utils'
+import { ProductsListSkeleton } from './Skeletons'
+import ProductCard from './ProductCard'
 
-export default function TopPicks() {
-  const [products, setProducts] = useState<Product[]>([])
+type Props = {
+   products?: Product[]
+}
 
-  useEffect(() => {
-    fetch('https://localhost:5001/api/products')
-      .then((res) => res.json())
-      .then((data) => {
-         const topPicks = data.slice(0, 8);
-         setProducts(topPicks)
-      })
-  }, [])
+export default function TopPicks({ products }: Props) {
 
    if (isVariableValid(products))
-      return <ProductList products={products} />
+      return (
+        <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
+          {products?.map((product) => (
+            <ProductCard 
+                product={product}
+                variant='view'
+                key={product.id} 
+            />
+          ))}
+        </div>
+      )
 
-   return <ProductSkeletonList />
+   return <ProductsListSkeleton />
 }
