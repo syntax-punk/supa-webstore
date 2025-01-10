@@ -27,7 +27,7 @@ export function NavMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         {headerNavLinks.map(({ title, path }) => (
-          <NavigationMenuItem>
+          <NavigationMenuItem key={title}>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle()}
               asChild
