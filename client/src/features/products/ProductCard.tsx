@@ -34,12 +34,12 @@ export default function ProductCard({
       const discountedPrice = price - price * (discount / 100);
 
       return (
-        <div className="flex gap-2 items-center">
-          <Badge className="flex gap-4" variant="destructive">
-            <div className="line-through">{price} NOK</div>
+        <div className='flex gap-2 items-center'>
+          <Badge className='flex gap-4' variant='destructive'>
+            <div className='line-through'>{price} NOK</div>
             <div>{discount}%</div>
           </Badge>
-          <h2 className="">{discountedPrice.toFixed(2)} NOK</h2>
+          <h2 className=''>{discountedPrice.toFixed(2)} NOK</h2>
         </div>
       );
     }
@@ -62,48 +62,48 @@ export default function ProductCard({
 
   return (
     <div>
-      <Card className="h-full border border-neutral-200 dark:border-neutral-600">
-        <CardHeader className="p-0">
-          <div className="relative w-full">
+      <Card className='h-full border border-neutral-200 dark:border-neutral-600'>
+        <CardHeader className='p-0'>
+          <div className='relative w-full'>
             <img
-              className="rounded-t-xl w-full h-full"
+              className='rounded-t-xl w-full h-full'
               src={product.imageUrl}
-              alt="product image"
-              aspect-ratio="1/1"
+              alt='product image'
+              aspect-ratio='1/1'
             />
           </div>
         </CardHeader>
-        <CardContent className="grid gap-1 p-4">
-          <Badge variant="outline" className="w-max text-neutral-500">
+        <CardContent className='grid gap-1 p-4'>
+          <Badge variant='outline' className='w-max text-neutral-500'>
             {product.type}
           </Badge>
-          <h2 className="mt-4">{product.name}</h2>
-          <p className="text-xs text-neutral-500 text-justify h-10">
+          <h2 className='mt-4'>{product.name}</h2>
+          <p className='text-xs text-neutral-500 text-justify h-10'>
             {product.description}
           </p>
         </CardContent>
         {variant === 'order' && (
-          <CardFooter className="flex-col items-start px-4 justify-center gap-y-4">
+          <CardFooter className='flex-col items-start px-4 justify-center gap-y-4'>
             {product.quantityInFridge > 0 ? (
               <ProductPrice />
             ) : (
-              <Badge variant="secondary">Out of stock</Badge>
+              <Badge variant='secondary'>Out of stock</Badge>
             )}
-            <div className="flex items-center justify-between w-full">
-              <div className="flex">
+            <div className='flex items-center justify-between w-full'>
+              <div className='flex'>
                 <Button
-                  className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
-                  variant="ghost"
+                  className='w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'
+                  variant='ghost'
                   onClick={onPlusClick}
                 >
                   <PlusIcon />
                 </Button>
-                <div className="w-8 h-8 flex items-center justify-center">
+                <div className='w-8 h-8 flex items-center justify-center'>
                   {amountInCart}
                 </div>
                 <Button
-                  className="w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
-                  variant="ghost"
+                  className='w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'
+                  variant='ghost'
                   onClick={onMinusClick}
                 >
                   <MinusIcon />
@@ -111,8 +111,8 @@ export default function ProductCard({
               </div>
               <div>
                 <Button
-                  className="justify-self-end w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700"
-                  variant="ghost"
+                  className='justify-self-end w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'
+                  variant='ghost'
                   onClick={onViewClick}
                 >
                   <ArrowRightIcon />

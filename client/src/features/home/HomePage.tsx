@@ -25,12 +25,12 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="flex flex-col border-neutral-200 dark:border-neutral-700">
+    <div className='flex flex-col border-neutral-200 dark:border-neutral-700'>
       <Carousel images={banners} />
-      <Separator className="my-2" />
-      <Heading title="Top Picks" description="our top smooooooth picks" />
+      <Separator className='my-2' />
+      <Heading title='Top Picks' description='our top smooooooth picks' />
       <TopPicks products={products} />
-      <Separator className="my-2" />
+      <Separator className='my-2' />
 
       {/* {isVariableValid(blogs) ? (
           <BlogPostGrid blogs={blogs} />

@@ -11,9 +11,9 @@ import { headerNavLinks } from './navConfig';
 
 export function MainNav() {
   return (
-    <div className="hidden md:flex gap-4">
-      <a href="/" className="flex items-center">
-        <span className="hidden font-medium sm:inline-block">
+    <div className='hidden md:flex gap-4'>
+      <a href='/' className='flex items-center'>
+        <span className='hidden font-medium sm:inline-block'>
           {config.name}
         </span>
       </a>
@@ -32,7 +32,7 @@ export function NavMenu() {
               className={navigationMenuTriggerStyle()}
               asChild
             >
-              <NavLink to={path} className="font-normal text-foreground/70">
+              <NavLink to={path} className='font-normal text-foreground/70'>
                 {title}
               </NavLink>
             </NavigationMenuLink>

@@ -23,11 +23,11 @@ export default function Carousel({ images }: { images: string[] }) {
 
   return (
     <>
-      <div className="overflow-hidden rounded-lg" ref={emblaRef}>
-        <div className="flex">
+      <div className='overflow-hidden rounded-lg' ref={emblaRef}>
+        <div className='flex'>
           {images.map((src, i) => (
-            <div className="relative flex-[0_0_100%]" key={i}>
-              <img src={src} className="aspect-auto" alt="banners" />
+            <div className='relative flex-[0_0_100%]' key={i}>
+              <img src={src} className='aspect-auto' alt='banners' />
             </div>
           ))}
         </div>
@@ -45,7 +45,7 @@ type Props = {
 const Dots = ({ itemsLength, selectedIndex }: Props) => {
   const arr = new Array(itemsLength).fill(0);
   return (
-    <div className="flex gap-1 justify-center -translate-y-8">
+    <div className='flex gap-1 justify-center -translate-y-8'>
       {arr.map((_, index) => {
         const selected = index === selectedIndex;
         return (

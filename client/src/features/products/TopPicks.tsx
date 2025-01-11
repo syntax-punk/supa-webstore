@@ -10,9 +10,9 @@ type Props = {
 export default function TopPicks({ products }: Props) {
   if (isVariableValid(products))
     return (
-      <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
+      <div className='mb-4 grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4'>
         {products?.map((product) => (
-          <ProductCard product={product} variant="view" key={product.id} />
+          <ProductCard product={product} variant='view' key={product.id} />
         ))}
       </div>
     );
