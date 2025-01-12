@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/card';
 import { ArrowRightIcon, MinusIcon, PlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 type ProductCardVariant = 'view' | 'order';
 
@@ -109,7 +110,7 @@ export default function ProductCard({
                   <MinusIcon />
                 </Button>
               </div>
-              <div>
+              <Link to={`/product/${product.id}`}>
                 <Button
                   className='justify-self-end w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'
                   variant='ghost'
@@ -117,7 +118,7 @@ export default function ProductCard({
                 >
                   <ArrowRightIcon />
                 </Button>
-              </div>
+              </Link>
             </div>
           </CardFooter>
         )}
