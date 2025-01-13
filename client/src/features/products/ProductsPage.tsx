@@ -9,7 +9,7 @@ import { ProductsListSkeleton } from './Skeletons';
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
+  useEffect(function fetchDataOnMount() {
     fetch('https://localhost:5001/api/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
