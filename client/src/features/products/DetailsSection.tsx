@@ -20,12 +20,17 @@ export default function DetailsSection({ product }: Props) {
           <Badge variant='outline'>{product.syrupBrand}</Badge>
         </Link>
       </div>
-      <div className='flex gap-2 items-center'>
+      <div className='flex gap-2 mb-2 items-center'>
         <p className='text-sm'>Categories:</p>
         <Badge variant='outline'>{product.type}</Badge>
       </div>
       <Separator />
+      <p className='text-sm'>Description:</p>
       <small>{product.description}</small>
+      <div className='flex gap-2 items-center mt-4'>
+        <p className='text-sm'>Available amount:</p>
+        <Badge variant='secondary'>{product.quantityInFridge}</Badge>
+      </div>
       <Separator />
       <div className='block space-y-6'>
         <ProductPrice
