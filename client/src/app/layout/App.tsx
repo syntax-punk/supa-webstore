@@ -1,4 +1,4 @@
-import Header from '@/features/common/nav/MainNavBar';
+import Header from '@/features/common/navbar/MainNavBar';
 import { Outlet } from 'react-router-dom';
 
 function App() {

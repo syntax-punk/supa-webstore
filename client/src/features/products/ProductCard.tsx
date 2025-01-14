@@ -9,6 +9,7 @@ import {
 import { ArrowRightIcon, MinusIcon, PlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import ProductPrice from './ProductPrice';
 
 type ProductCardVariant = 'view' | 'order';
 
@@ -27,27 +28,6 @@ export default function ProductCard({
   onProductAdd,
   onProductRemove,
 }: Props) {
-  function ProductPrice() {
-    const price = product.price / 100;
-    const discount = product.discountPercent;
-
-    if (discount > 0) {
-      const discountedPrice = price - price * (discount / 100);
-
-      return (
-        <div className='flex gap-2 items-center'>
-          <Badge className='flex gap-4' variant='destructive'>
-            <div className='line-through'>{price} NOK</div>
-            <div>{discount}%</div>
-          </Badge>
-          <h2 className=''>{discountedPrice.toFixed(2)} NOK</h2>
-        </div>
-      );
-    }
-
-    return <h2>{price} NOK</h2>;
-  }
-
   function onPlusClick(): void {
     onProductAdd?.(product.id);
   }
@@ -86,7 +66,10 @@ export default function ProductCard({
         {variant === 'order' && (
           <CardFooter className='flex-col items-start px-4 justify-center gap-y-4'>
             {product.quantityInFridge > 0 ? (
-              <ProductPrice />
+              <ProductPrice
+                productPrice={product.price}
+                productDiscount={product.discountPercent}
+              />
             ) : (
               <Badge variant='secondary'>Out of stock</Badge>
             )}
