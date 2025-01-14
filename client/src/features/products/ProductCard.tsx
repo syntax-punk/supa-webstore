@@ -10,6 +10,7 @@ import { ArrowRightIcon, MinusIcon, PlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import ProductPrice from './ProductPrice';
+import ProductOrderButtons from './ProductOrderButtons';
 
 type ProductCardVariant = 'view' | 'order';
 
@@ -74,25 +75,11 @@ export default function ProductCard({
               <Badge variant='secondary'>Out of stock</Badge>
             )}
             <div className='flex items-center justify-between w-full'>
-              <div className='flex'>
-                <Button
-                  className='w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'
-                  variant='ghost'
-                  onClick={onPlusClick}
-                >
-                  <PlusIcon />
-                </Button>
-                <div className='w-8 h-8 flex items-center justify-center'>
-                  {amountInCart}
-                </div>
-                <Button
-                  className='w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'
-                  variant='ghost'
-                  onClick={onMinusClick}
-                >
-                  <MinusIcon />
-                </Button>
-              </div>
+              <ProductOrderButtons
+                amountInCart={amountInCart}
+                onProductAdd={onPlusClick}
+                onProductRemove={onMinusClick}
+              />
               <Link to={`/product/${product.id}`}>
                 <Button
                   className='justify-self-end w-8 h-8 p-0 rounded-full border border-neutral-200 dark:border-neutral-600 active:bg-neutral-200 dark:active:bg-neutral-700'

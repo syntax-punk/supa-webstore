@@ -17,7 +17,6 @@ export default function ProductsPage() {
 
   return (
     <div className='flex flex-col border-neutral-200 dark:border-neutral-700'>
-      <Separator className='my-2' />
       <Heading title='supa smooooooth' description='impossible to resist' />
       {isVariableValid(products) ? (
         <ProductList products={products} />

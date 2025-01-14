@@ -31,7 +31,7 @@ export default function ProductDetails() {
     <>
       <Breadcrumbs product={product} />
       <div className='mt-6 grid grid-cols-1 gap-2 md:grid-cols-3'>
-        <div className='relative min-h-[50vh] w-full col-span-1'>
+        <div className='relative w-full col-span-1'>
           <Carousel images={[product.imageUrl]} />
         </div>
         <DetailsSection product={product} />

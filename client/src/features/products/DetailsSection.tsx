@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Separator } from '../common/Separator';
 import { Badge } from '@/components/ui/badge';
 import ProductPrice from './ProductPrice';
+import ProductOrderButtons from './ProductOrderButtons';
 
 type Props = {
   product: Product;
@@ -25,19 +26,17 @@ export default function DetailsSection({ product }: Props) {
       </div>
       <Separator />
       <small>{product.description}</small>
-
       <Separator />
-      <div className='block space-y-2'>
+      <div className='block space-y-6'>
         <ProductPrice
           productPrice={product.price}
           productDiscount={product.discountPercent}
         />
-        <div className='flex gap-2'>
-          <div></div>
-          <div></div>
-          {/* <CartButton product={product} />
-          <WishlistButton product={product} /> */}
-        </div>
+        <ProductOrderButtons
+          amountInCart={0}
+          onProductAdd={() => console.log('Add to cart')}
+          onProductRemove={() => console.log('Remove from cart')}
+        />
       </div>
     </div>
   );
